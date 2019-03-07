@@ -1,0 +1,57 @@
+@import '../assets/scss/pptm-theming.scss';
+
+.example-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.side-bar-menu{
+  min-width: 250px;
+  padding:0px;
+  box-shadow: none;
+  .sidebar-menus{
+    width:100%;
+    text-decoration: none;
+    padding-top:10px;
+    padding-bottom: 10px;
+    transition: 0.7s;
+    &:hover{
+      @include themify($themes){
+        color: themed('sixthColor');
+      }
+    }
+    .sidebar-menus-icon{
+      margin-right: 5px;
+      align-self: center;
+    }
+    .sidebar-menus-title{
+      text-align: left;
+    }
+  }
+}
+
+.sidebar-dropdown-menus-header{
+  padding-left:15px;
+  padding-right: 15px;
+}
+
+.sidebar-dropdown-menus{
+  width: 100%;
+}
+
+.sidebar-menu-panel-header{
+  padding-left:15px;
+  padding-right:15px;
+  &:hover{
+    @include themify($themes){
+      color: themed('sixthColor');
+    }
+  }
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}

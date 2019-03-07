@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+//theme setup:
+
+$pptm-primary: mat-palette($mat-indigo,A200);
+$pptm-accent: mat-palette($mat-red,A200);
+$pptm-warn: mat-palette($mat-red,A700);
+
+$pptm-material-theme: mat-light-theme(
+  $pptm-primary,
+  $pptm-accent,
+  $pptm-warn
+);
+
+
+@include angular-material-theme($pptm-material-theme);
