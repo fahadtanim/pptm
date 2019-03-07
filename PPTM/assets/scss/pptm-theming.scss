@@ -1,0 +1,82 @@
+
+
+
+/*####  FONTS   #####*/
+
+$ROBOTO: 'Roboto', sans-serif;
+$POIRETONE: 'Poiret One', cursive;
+$KAUSHAN: 'Kaushan Script', cursive;
+
+$themes: (
+  light: (
+    primaryFont: $ROBOTO,
+    primaryColor: #2979FF,
+    secondaryColor: #2962FF,
+    thirdColor: #fff,
+    fourthColor: #000,
+    fifthColor:#009688,
+    sixthColor:#004D40
+  ),
+);
+
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    .pptm-theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+
+
+/*###############################     MEDIA QUERY    ####################################*/
+
+$smart-phone-width: 576px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+$extra-large-desktop-width: 1360px;
+
+
+@mixin largeDesktop {
+  @media (min-width: #{$extra-large-desktop-width}){
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) and (max-width: #{$extra-large-desktop-width - 1px}){
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (min-width: #{$smart-phone-width}) and (max-width: #{$tablet-width - 1px}){
+    @content;
+  }
+}
+
+@mixin smallPhone {
+  @media (max-width: #{$smart-phone-width - 1px}){
+    @content;
+  }
+}
