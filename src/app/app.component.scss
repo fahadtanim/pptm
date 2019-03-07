@@ -2,7 +2,7 @@
 
 .example-container {
   position: absolute;
-  top: 64px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -54,4 +54,14 @@
 
 .mat-expansion-panel:not([class*='mat-elevation-z']) {
   box-shadow: none;
+}
+
+.logo-text{
+  font-family: $KAUSHAN;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  @include themify($themes){
+    color: themed('sixthColor');
+  }
 }

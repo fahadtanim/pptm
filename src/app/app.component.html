@@ -1,4 +1,4 @@
-<app-header [sideNavBar]="sidenav"></app-header>
+
 
 <mat-sidenav-container class="example-container pptm-theme-light">
     <mat-sidenav class="col-2 side-bar-menu" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
@@ -32,7 +32,14 @@
         </div>
       </a>
     -->
-      <mat-expansion-panel class="sidebar-menu-panel">
+
+      <div class="container logo-container">
+        <div class="row ">
+          <h1 class="logo-text">PPTM</h1>
+        </div>
+      </div>
+
+      <mat-expansion-panel class="sidebar-menu-panel" [expanded]='true'>
         <mat-expansion-panel-header class="sidebar-menu-panel-header">
           <mat-panel-title class="row">
               <mat-icon class="sidebar-menus-icon col-1">collections_bookmark</mat-icon>
@@ -42,7 +49,7 @@
 
         <a [routerLink]="['/projectboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
           <div class="row">
-              <mat-icon class="sidebar-menus-icon col-1">visibility</mat-icon>
+              <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
               <span class="col-9 sidebar-menus-title">View Projects</span>
           </div>
         </a>
@@ -52,20 +59,25 @@
               <span class="col-9 sidebar-menus-title">Add New Project</span>
           </div>
         </button>
-
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
+              <span class="col-9 sidebar-menus-title">Filter Project</span>
+          </div>
+        </button>
       </mat-expansion-panel>
 
       <mat-expansion-panel class="sidebar-menu-panel">
         <mat-expansion-panel-header class="sidebar-menu-panel-header">
           <mat-panel-title class="row">
-              <mat-icon class="sidebar-menus-icon col-1">assignment_turned_in</mat-icon>
+              <mat-icon class="sidebar-menus-icon col-1">ballot</mat-icon>
               <span class="col-9 sidebar-menus-title">TASK BOARD</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
 
         <a [routerLink]="['/projectboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
           <div class="row">
-              <mat-icon class="sidebar-menus-icon col-1">visibility</mat-icon>
+              <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
               <span class="col-9 sidebar-menus-title">View Tasks</span>
           </div>
         </a>
@@ -75,13 +87,103 @@
               <span class="col-9 sidebar-menus-title">Add New Task</span>
           </div>
         </button>
-
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
+              <span class="col-9 sidebar-menus-title">Filter Task</span>
+          </div>
+        </button>
       </mat-expansion-panel>
 
+      <mat-expansion-panel class="sidebar-menu-panel">
+        <mat-expansion-panel-header class="sidebar-menu-panel-header">
+          <mat-panel-title class="row">
+              <mat-icon class="sidebar-menus-icon col-1">supervised_user_circle</mat-icon>
+              <span class="col-9 sidebar-menus-title">CLIENT BOARD</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
+              <span class="col-9 sidebar-menus-title">View Clients</span>
+          </div>
+        </a>
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">queue</mat-icon>
+              <span class="col-9 sidebar-menus-title">Add New Client</span>
+          </div>
+        </button>
+
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
+              <span class="col-9 sidebar-menus-title">Filter Client</span>
+          </div>
+        </button>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="sidebar-menu-panel">
+        <mat-expansion-panel-header class="sidebar-menu-panel-header">
+          <mat-panel-title class="row">
+              <mat-icon class="sidebar-menus-icon col-1">supervisor_account</mat-icon>
+              <span class="col-9 sidebar-menus-title">USER BOARD</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
+              <span class="col-9 sidebar-menus-title">View Users</span>
+          </div>
+        </a>
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">queue</mat-icon>
+              <span class="col-9 sidebar-menus-title">Add New User</span>
+          </div>
+        </button>
+        <button mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
+              <span class="col-9 sidebar-menus-title">Filter User</span>
+          </div>
+        </button>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="sidebar-menu-panel">
+        <mat-expansion-panel-header class="sidebar-menu-panel-header">
+          <mat-panel-title class="row">
+              <mat-icon class="sidebar-menus-icon col-1">vertical_split</mat-icon>
+              <span class="col-9 sidebar-menus-title">Others</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">assignment_turned_in</mat-icon>
+              <span class="col-9 sidebar-menus-title">Task State</span>
+          </div>
+        </a>
+        <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">watch_later</mat-icon>
+              <span class="col-9 sidebar-menus-title">Priority State</span>
+          </div>
+        </a>
+        <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <div class="row">
+              <mat-icon class="sidebar-menus-icon col-1">edit_attributes</mat-icon>
+              <span class="col-9 sidebar-menus-title">Label</span>
+          </div>
+        </a>
+      </mat-expansion-panel>
 
     </mat-sidenav>
 
   <mat-sidenav-content>
+    <app-header [sideNavBar]="sidenav"></app-header>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
