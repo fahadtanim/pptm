@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [];
+import { ProjectboardComponent } from './projectboard/projectboard.component';
+const routes: Routes = [
+  { path: '', redirectTo: '/projectboard', pathMatch: 'full' },
+  { path: 'projectboard', component: ProjectboardComponent },
+  { path: '*', component: ProjectboardComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

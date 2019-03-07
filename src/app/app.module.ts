@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './materialModule/material.module';
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { TaskboardComponent } from './taskboard/taskboard.component';
+import { ProjectboardComponent } from './projectboard/projectboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    TaskboardComponent,
+    ProjectboardComponent
   ],
   imports: [
     BrowserModule,
