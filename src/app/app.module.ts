@@ -10,22 +10,38 @@ import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TaskboardComponent } from './taskboard/taskboard.component';
 import { ProjectboardComponent } from './projectboard/projectboard.component';
-
+import { AddNewProjectComponent } from './projectboard/add-new-project/add-new-project.component';
+import { FilterProjectComponent } from './projectboard/filter-project/filter-project.component';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddNewTaskComponent } from './taskboard/add-new-task/add-new-task.component';
+import { FilterTaskComponent } from './taskboard/filter-task/filter-task.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SideBarComponent,
     TaskboardComponent,
-    ProjectboardComponent
+    ProjectboardComponent,
+    AddNewProjectComponent,
+    FilterProjectComponent,
+    AddNewTaskComponent,
+    FilterTaskComponent
+  ],
+  entryComponents: [
+    AppComponent,
+    AddNewProjectComponent,
+    AddNewTaskComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{ provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
