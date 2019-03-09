@@ -14,12 +14,17 @@ export class AddNewTaskComponent implements OnInit {
   public taskName: string;
   public cid: string;
   public jid: string;
+  public projectNameVisibility: boolean;
+  public projectName: string;
   public shortNote: string;
   public description: string;
   public priorities: any;
   public taskStates: any;
+  public scheduleStartNotifyTime: any;
   constructor(public dialogRef: MatDialogRef<AddNewTaskComponent>) {
     this.taskName = '';
+    this.projectName = 'test';
+    this.projectNameVisibility = false;
     this.taskStates = [
       { state : 'todo', viewState : 'To Do' },
       { state : 'doing', viewState : 'Doing' },

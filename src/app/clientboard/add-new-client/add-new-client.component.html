@@ -1,0 +1,27 @@
+<div class="container-fluid pptm-theme-light">
+  <div class="row">
+    <form class="container">
+      <mat-form-field class="pptm-input-form-full">
+          <input matInput type="text" placeholder="Client Name" [(ngModel)]="clientName" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="clientName" matSuffix mat-icon-button aria-label="Clear" (click)="clientName=''">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="pptm-input-form-half-left">
+          <input matInput type="text" placeholder="CID" [(ngModel)]="cid" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="cid" matSuffix mat-icon-button aria-label="Clear" (click)="cid=''">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+      <div class="row">
+        <div class="container">
+          <div class="row input-form-button-container">
+            <button type='submit' class='pptm-input-form-submit-button' mat-raised-button matTooltip='Add New Client' color='primary'>Create</button>
+            <button mat-raised-button class="pptm-input-form-cancel-button" matTooltip='Cancel Client Creation Process' color="primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

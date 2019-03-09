@@ -1,34 +1,39 @@
 <div class="container-fluid pptm-theme-light">
   <div class="row">
     <form class="container">
-      <mat-form-field class="full-width create-project-form-name">
+      <mat-form-field class="full-width pptm-input-form-full">
         <input matInput type="text" placeholder="Task Name" [(ngModel)]="taskName" [ngModelOptions]="{standalone: true}" required>
         <button mat-button *ngIf="taskName" matSuffix mat-icon-button aria-label="Clear" (click)="taskName=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-cid">
+      <mat-form-field class="full-width pptm-input-form-half-left">
         <input matInput type="text" placeholder="CID" [(ngModel)]="cid" [ngModelOptions]="{standalone: true}" required>
         <button mat-button *ngIf="cid" matSuffix mat-icon-button aria-label="Clear" (click)="cid=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-jid">
+      <mat-form-field class="full-width pptm-input-form-half-right">
         <input matInput type="text" placeholder="JID" [(ngModel)]="jid" [ngModelOptions]="{standalone: true}" required>
         <button mat-button *ngIf="jid" matSuffix mat-icon-button aria-label="Clear" (click)="jid=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-      <mat-form-field class="full-width create-project-form-name">
+
+      <mat-form-field class="full-width pptm-input-form-full" *ngIf="projectNameVisibility">
+        <input matInput placeholder="Project Name (disabled)" disabled value="{{projectName}}">
+      </mat-form-field>
+
+      <mat-form-field class="full-width pptm-input-form-full">
         <input matInput type="text" placeholder="Short Note" [(ngModel)]="shortNote" [ngModelOptions]="{standalone: true}" required>
         <button mat-button *ngIf="shortNote" matSuffix mat-icon-button aria-label="Clear" (click)="shortNote=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-cid">
+      <mat-form-field class="full-width pptm-input-form-half-left">
         <mat-select placeholder="Priority State">
           <mat-option *ngFor="let priority of priorities" [value]="priority.state">
             {{priority.viewState}}
@@ -36,7 +41,7 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-jid">
+      <mat-form-field class="full-width pptm-input-form-half-right">
         <mat-select placeholder="Task State">
           <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
             {{taskState.viewState}}
@@ -44,13 +49,20 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field class="full-width pptm-input-form-half-left">
         <input matInput [matDatepicker]="picker" placeholder="Deadline" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-name">
+      <mat-form-field class="full-width pptm-input-form-full">
+        <input matInput type="datetime-local" placeholder="Schedule Start notify time" [(ngModel)]="scheduleStartNotifyTime" [ngModelOptions]="{standalone: true}">
+        <button mat-button *ngIf="scheduleStartNotifyTime" matSuffix mat-icon-button aria-label="Clear" (click)="scheduleStartNotifyTime=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="full-width pptm-input-form-full">
         <textarea matInput type="text" placeholder="Description" [(ngModel)]="description" [ngModelOptions]="{standalone: true}"></textarea>
         <button mat-button *ngIf="description" matSuffix mat-icon-button aria-label="Clear" (click)="description=''">
           <mat-icon>close</mat-icon>
@@ -58,8 +70,10 @@
       </mat-form-field>
       <div class="row">
         <div class="container">
-          <button type='submit' class='create-project-submit-button' mat-raised-button color='primary'>Create</button>
-          <button mat-raised-button class="create-project-cancel-button" color="primary">Cancel</button>
+          <div class="row input-form-button-container">
+              <button type='submit' class='pptm-input-submit-button' mat-raised-button matTooltip='Add New Task' color='primary'>Create</button>
+              <button mat-raised-button class="pptm-input-cancel-button" matTooltip='Cancel Task Creation Process' color="primary">Cancel</button>
+          </div>
         </div>
       </div>
     </form>

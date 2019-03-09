@@ -14,3 +14,58 @@ button:focus {
 textarea{
   resize: none;
 }
+
+
+/*#####################   SCROLLBAR   ###############################*/
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:active{
+  background: rgba(0,0,0,.5);
+}
+
+/*####################    INPUT FORM     #####################*/
+
+.pptm-input-form-full{
+  width: 100%;
+  input{
+    width: 100%;
+  }
+}
+
+.pptm-input-form-half-left {
+  width: 45%;
+  margin-right:5%;
+  input{
+    width: 100%;
+  }
+}
+
+.pptm-input-form-half-right{
+  width: 45%;
+  margin-left:5%;
+  input{
+    width: 100%;
+  }
+}
+
+.input-form-button-container{
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+

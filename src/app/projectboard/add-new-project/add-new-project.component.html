@@ -1,21 +1,47 @@
 <div class="container-fluid pptm-theme-light">
   <div class="row">
     <form class="container">
-      <mat-form-field class="full-width create-project-form-name">
-        <input matInput placeholder="Project Name" required>
+      <mat-form-field class="pptm-input-form-full">
+          <input matInput type="text" placeholder="Project Name" [(ngModel)]="projectName" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="projectName" matSuffix mat-icon-button aria-label="Clear" (click)="projectName=''">
+            <mat-icon>close</mat-icon>
+          </button>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-cid">
-          <input matInput placeholder="CID" required>
+      <mat-form-field class="pptm-input-form-half-left">
+          <input matInput type="text" placeholder="CID" [(ngModel)]="cid" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="cid" matSuffix mat-icon-button aria-label="Clear" (click)="cid=''">
+            <mat-icon>close</mat-icon>
+          </button>
       </mat-form-field>
 
-      <mat-form-field class="full-width create-project-form-jid">
-          <input matInput placeholder="JID" required>
+      <mat-form-field class="pptm-input-form-half-right">
+          <input matInput type="text" placeholder="JID" [(ngModel)]="jid" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="jid" matSuffix mat-icon-button aria-label="Clear" (click)="cid=''">
+            <mat-icon>close</mat-icon>
+          </button>
       </mat-form-field>
+      <mat-form-field class="full-width pptm-input-form-full" *ngIf="clientNameVisibility">
+        <input matInput placeholder="Client Name (disabled)" disabled value="{{clientName}}">
+      </mat-form-field>
+      <mat-form-field class="full-width pptm-input-form-half-left">
+        <input matInput [matDatepicker]="picker" placeholder="Deadline" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="full-width pptm-input-form-half-right">
+          <mat-select placeholder="Priority State">
+            <mat-option *ngFor="let projectState of projectStates" [value]="projectState.state">
+              {{projectState.viewState}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       <div class="row">
         <div class="container">
-          <button type='submit' class='create-project-submit-button' mat-raised-button color='primary'>Create</button>
-          <button mat-raised-button class="create-project-cancel-button" color="primary">Cancel</button>
+          <div class="row input-form-button-container">
+            <button type='submit' class='pptm-input-form-submit-button' mat-raised-button matTooltip='Add New Project' color='primary' (click)='openSnackBar()'>Create</button>
+            <button mat-raised-button class="pptm-input-form-cancel-button" matTooltip='Cancel Project Creation Process' color="primary">Cancel</button>
+          </div>
         </div>
       </div>
     </form>

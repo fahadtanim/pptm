@@ -1,0 +1,35 @@
+<div class="container-fluid pptm-theme-light">
+  <div class="row">
+    <form class="container">
+      <mat-form-field class="pptm-input-form-full">
+          <input matInput type="text" placeholder="User Name" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="userName" matSuffix mat-icon-button aria-label="Clear" (click)="userName=''">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="pptm-input-form-full">
+          <input matInput type="text" placeholder="User Email" [(ngModel)]="userEmail" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="userEmail" matSuffix mat-icon-button aria-label="Clear" (click)="userEmail=''">
+            <mat-icon>close</mat-icon>
+          </button>
+      </mat-form-field>
+
+      <mat-form-field class="full-width pptm-input-form-half-left">
+          <mat-select placeholder="User Roles">
+            <mat-option *ngFor="let userRole of userRoles" [value]="userRole.role">
+              {{userRole.role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      <div class="row">
+        <div class="container">
+          <div class="row input-form-button-container">
+            <button type='submit' class='pptm-input-form-submit-button' mat-raised-button matTooltip='Add New User' color='primary'>Create</button>
+            <button mat-raised-button class="pptm-input-form-cancel-button" matTooltip='Cancel User Creation Process' color="primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

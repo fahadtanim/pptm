@@ -15,6 +15,12 @@ import { FilterProjectComponent } from './projectboard/filter-project/filter-pro
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddNewTaskComponent } from './taskboard/add-new-task/add-new-task.component';
 import { FilterTaskComponent } from './taskboard/filter-task/filter-task.component';
+import { ClientboardComponent } from './clientboard/clientboard.component';
+import { AddNewClientComponent } from './clientboard/add-new-client/add-new-client.component';
+import { FilterClientComponent } from './clientboard/filter-client/filter-client.component';
+import { UserboardComponent } from './userboard/userboard.component';
+import { AddNewUserComponent } from './userboard/add-new-user/add-new-user.component';
+import { FilterUserComponent } from './userboard/filter-user/filter-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +31,20 @@ import { FilterTaskComponent } from './taskboard/filter-task/filter-task.compone
     AddNewProjectComponent,
     FilterProjectComponent,
     AddNewTaskComponent,
-    FilterTaskComponent
+    FilterTaskComponent,
+    ClientboardComponent,
+    AddNewClientComponent,
+    FilterClientComponent,
+    UserboardComponent,
+    AddNewUserComponent,
+    FilterUserComponent,
   ],
   entryComponents: [
     AppComponent,
     AddNewProjectComponent,
     AddNewTaskComponent,
+    AddNewClientComponent,
+    AddNewUserComponent,
   ],
   imports: [
     BrowserModule,
