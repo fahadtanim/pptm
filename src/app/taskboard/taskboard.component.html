@@ -1,3 +1,115 @@
-<p>
-  taskboard works!
-</p>
+<div class="container-fluid pptm-theme-light">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="row task-board-header">
+          <div class="col-3">
+            <h1 class="pptm-page-title">Task Board</h1>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="full-width pptm-input-form-full">
+              <input matInput type="text" placeholder="Filter Task" [(ngModel)]="filterTaskValue" [ngModelOptions]="{standalone: true}">
+              <button mat-button *ngIf="filterTaskValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterTaskValue=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="col-4 offset-1 justify-space-between">
+            <button class="create-task-btn content-center" mat-raised-button color='primary'>Add New Task</button>
+            <button class="add-task-state-btn content-center" mat-raised-button color='primary'>Add New State</button>
+          </div>
+        </div>
+        <mat-accordion class="row task-board-container">
+          <mat-expansion-panel class="container" *ngFor="let task of Tasks | taskboardFilter:filterTaskValue">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{task.name}}</mat-panel-title>
+              <mat-panel-description class="justify-center">
+                <p class="col-4 content-center mat-desc-shortnote">{{task.short_note}}</p>
+                <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state" placeholder="Task State">
+                  <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
+                    {{taskState.viewState}}
+                  </mat-option>
+                </mat-select>
+                <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.color}">
+                  {{task.priority_view_state}}
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="container-fluid">
+              <div class="row task-name-container task-details-container">
+                <div class="col-2">Name</div>
+                <div class="col-8 offset-2">{{task.name}}</div>
+              </div>
+              <div class="row task-description-container task-details-container">
+                <div class="col-2">Description</div>
+                <div class="col-8 offset-2">{{task.description}}</div>
+              </div>
+              <div class="row task-short-note-container task-details-container">
+                  <div class="col-2">Short Note</div>
+                  <div class="col-8 offset-2">{{task.short_note}}</div>
+                </div>
+              <div class="row task-status-container task-details-container">
+                <div class="col-2">Task Status</div>
+                <div class="col-8 offset-2">
+                  <mat-select class="col-3" [(value)]="task.task_state" placeholder="Task State">
+                    <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
+                      {{taskState.viewState}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="row task-deadline-container task-details-container">
+                <div class="col-2">Deadline</div>
+                <div class="col-8 offset-2">
+                  {{task.deadline}}
+                </div>
+              </div>
+              <div class="row task-priority-container task-details-container">
+                <div class="col-2">Priority Status</div>
+                <div class="col-8 offset-2">
+                  <mat-select class="col-3" [(value)]="task.priority_state" placeholder="Priority State">
+                    <mat-option *ngFor="let priority of priorities" [value]="priority.state">
+                      {{priority.viewState}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="row task-label-container task-details-container">
+                <div class="col-2">Label</div>
+                <div class="col-8 offset-2">
+                  <div class="row">
+                      <mat-select  class="col-3" [(value)]="task.label" placeholder="Label">
+                        <mat-option *ngFor="let label of labels" [value]="label">
+                          <div class="label-options" [ngStyle]="{'background-color': label.color}" >{{label.color}}</div>
+                        </mat-option>
+                      </mat-select>
+                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.color}"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row task-cid-container task-details-container">
+                <div class="col-2">CID</div>
+                <div class="col-8 offset-2">
+                  {{task.cid}}
+                </div>
+              </div>
+              <div class="row task-jid-container task-details-container">
+                <div class="col-2">JID</div>
+                <div class="col-8 offset-2">
+                  {{task.jid}}
+                </div>
+                </div>
+              <div class="row task-details-container justify-space-between">
+                  <button class="second-button-class" mat-raised-button color='primary'>Edit Task</button>
+                  <button class="second-button-class" mat-raised-button color='primary'>Delete Task</button>
+              </div>
+            </div>
+
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

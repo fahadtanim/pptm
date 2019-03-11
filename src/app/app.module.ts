@@ -21,6 +21,7 @@ import { FilterClientComponent } from './clientboard/filter-client/filter-client
 import { UserboardComponent } from './userboard/userboard.component';
 import { AddNewUserComponent } from './userboard/add-new-user/add-new-user.component';
 import { FilterUserComponent } from './userboard/filter-user/filter-user.component';
+import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { FilterUserComponent } from './userboard/filter-user/filter-user.compone
     UserboardComponent,
     AddNewUserComponent,
     FilterUserComponent,
+    TaskboardFilterPipe,
   ],
   entryComponents: [
     AppComponent,
@@ -45,6 +47,7 @@ import { FilterUserComponent } from './userboard/filter-user/filter-user.compone
     AddNewTaskComponent,
     AddNewClientComponent,
     AddNewUserComponent,
+    ProjectboardComponent,
   ],
   imports: [
     BrowserModule,

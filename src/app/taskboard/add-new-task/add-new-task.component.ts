@@ -21,6 +21,7 @@ export class AddNewTaskComponent implements OnInit {
   public priorities: any;
   public taskStates: any;
   public scheduleStartNotifyTime: any;
+  public labels: any;
   constructor(public dialogRef: MatDialogRef<AddNewTaskComponent>) {
     this.taskName = '';
     this.projectName = 'test';
@@ -34,6 +35,20 @@ export class AddNewTaskComponent implements OnInit {
       { state : 'major', viewState : 'Major' },
       { state : 'minor', viewState : 'Minor' },
       { state : 'severe', viewState : 'Severe' },
+    ];
+
+    this.labels = [
+      { id : '1', color : '#b71c1c' },
+      { id : '2', color : '#880e4f' },
+      { id : '3', color : '#4a148c' },
+      { id : '4', color : '#1a237e' },
+      { id : '5', color : '#2962ff' },
+      { id : '6', color : '#004d40' },
+      { id : '7', color : '#1b5e20' },
+      { id : '8', color : '#827717' },
+      { id : '9', color : '#ff5722' },
+      { id : '10', color : '#3e2723' },
+      { id : '11', color : '#212121' },
     ];
   }
 

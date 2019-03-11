@@ -55,6 +55,14 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
+      <mat-form-field class="full-width pptm-input-form-half-right">
+        <mat-select placeholder="Label">
+          <mat-option *ngFor="let label of labels" [value]="label.id">
+            <div class="label-options" [ngStyle]="{'background-color': label.color}" >{{label.color}}</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field class="full-width pptm-input-form-full">
         <input matInput type="datetime-local" placeholder="Schedule Start notify time" [(ngModel)]="scheduleStartNotifyTime" [ngModelOptions]="{standalone: true}">
         <button mat-button *ngIf="scheduleStartNotifyTime" matSuffix mat-icon-button aria-label="Clear" (click)="scheduleStartNotifyTime=''">

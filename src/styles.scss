@@ -37,6 +37,40 @@ textarea{
   background: rgba(0,0,0,.5);
 }
 
+
+/*#########################   POSITIONING   ###################*/
+
+
+.content-center{
+  align-self: center;
+}
+
+.align-end{
+  align-self: flex-end;
+}
+
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
+.justify-space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.justify-space-around{
+  display: flex;
+  justify-content: space-around;
+}
+
+.justify-evenly{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
 /*####################    INPUT FORM     #####################*/
 
 .pptm-input-form-full{

@@ -39,6 +39,13 @@
         </div>
       </div>
 
+      <a [routerLink]="['/projectboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+        <div class="row">
+            <mat-icon class="sidebar-menus-icon col-1">dashboard</mat-icon>
+            <span class="col-9 sidebar-menus-title">DASHBOARD</span>
+        </div>
+      </a>
+
       <mat-expansion-panel class="sidebar-menu-panel" [expanded]='true'>
         <mat-expansion-panel-header class="sidebar-menu-panel-header">
           <mat-panel-title class="row">
@@ -75,7 +82,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a [routerLink]="['/projectboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+        <a [routerLink]="['/taskboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
           <div class="row">
               <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
               <span class="col-9 sidebar-menus-title">View Tasks</span>
