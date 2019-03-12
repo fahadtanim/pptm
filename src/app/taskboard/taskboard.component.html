@@ -6,6 +6,8 @@
           <div class="col-3">
             <h1 class="pptm-page-title">Task Board</h1>
           </div>
+        </div>
+        <div class="row">
           <div class="col-4">
             <mat-form-field class="full-width pptm-input-form-full">
               <input matInput type="text" placeholder="Filter Task" [(ngModel)]="filterTaskValue" [ngModelOptions]="{standalone: true}">
@@ -14,9 +16,25 @@
               </button>
             </mat-form-field>
           </div>
-          <div class="col-4 offset-1 justify-space-between">
+
+          <!--#######   TASK CUSTOM FILTER   #######-->
+          <div class="col-4">
+            <div class="row justify-center task-filter-container">
+              <mat-expansion-panel class="content-center container-fluid">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Custom Filter</mat-panel-title>
+                    <mat-panel-description class="justify-end"><mat-icon>filter_list</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="container-fluid">
+
+                </div>
+              </mat-expansion-panel>
+            </div>
+          </div>
+
+
+          <div class="col-3 offset-1 justify-space-between">
             <button class="create-task-btn content-center" mat-raised-button color='primary'>Add New Task</button>
-            <button class="add-task-state-btn content-center" mat-raised-button color='primary'>Add New State</button>
           </div>
         </div>
         <mat-accordion class="row task-board-container">
@@ -101,8 +119,8 @@
                 </div>
                 </div>
               <div class="row task-details-container justify-space-between">
-                  <button class="second-button-class" mat-raised-button color='primary'>Edit Task</button>
-                  <button class="second-button-class" mat-raised-button color='primary'>Delete Task</button>
+                  <button  mat-raised-button color='primary'>Edit Task</button>
+                  <button  mat-raised-button color='primary'>Delete Task</button>
               </div>
             </div>
 

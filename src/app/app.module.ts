@@ -12,7 +12,7 @@ import { TaskboardComponent } from './taskboard/taskboard.component';
 import { ProjectboardComponent } from './projectboard/projectboard.component';
 import { AddNewProjectComponent } from './projectboard/add-new-project/add-new-project.component';
 import { FilterProjectComponent } from './projectboard/filter-project/filter-project.component';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
 import { AddNewTaskComponent } from './taskboard/add-new-task/add-new-task.component';
 import { FilterTaskComponent } from './taskboard/filter-task/filter-task.component';
 import { ClientboardComponent } from './clientboard/clientboard.component';
@@ -22,6 +22,8 @@ import { UserboardComponent } from './userboard/userboard.component';
 import { AddNewUserComponent } from './userboard/add-new-user/add-new-user.component';
 import { FilterUserComponent } from './userboard/filter-user/filter-user.component';
 import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
+import { MainHeaderComponent } from './main-header/main-header.component';
+import { LayoutModule } from '@angular/cdk/layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
     AddNewUserComponent,
     FilterUserComponent,
     TaskboardFilterPipe,
+    MainHeaderComponent,
   ],
   entryComponents: [
     AppComponent,
@@ -48,6 +51,7 @@ import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
     AddNewClientComponent,
     AddNewUserComponent,
     ProjectboardComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,12 @@ import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [{ provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] },],

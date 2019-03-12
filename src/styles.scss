@@ -5,7 +5,9 @@
 
 
 
-
+html,body{
+  height: 100%;
+}
 
 button:focus {
   outline: none;
@@ -52,6 +54,11 @@ textarea{
 .justify-center{
   display: flex;
   justify-content: center;
+}
+
+.justify-end{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .justify-space-between{

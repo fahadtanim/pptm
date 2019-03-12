@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskboardFilterPipe } from './taskboard-filter.pipe';
 @Component({
   selector: 'app-taskboard',
   templateUrl: './taskboard.component.html',
   styleUrls: ['./taskboard.component.scss'],
-  pipes: [TaskboardFilterPipe]
 })
 
 
@@ -17,6 +15,11 @@ export class TaskboardComponent implements OnInit {
   public priorities: any;
   public labels: any;
   public filterTaskValue: string;
+
+
+
+  /* #########   FILTER TASK PROPERTY   ########### */
+
 
   public Tasks: any;
   constructor() { }

@@ -10,7 +10,6 @@ import { AddNewUserComponent } from './userboard/add-new-user/add-new-user.compo
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  events: string[] = [];
   opened: boolean;
   constructor(public dialog: MatDialog){
 
