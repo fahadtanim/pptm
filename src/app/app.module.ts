@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import {
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher
+} from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './materialModule/material.module';
@@ -12,7 +15,15 @@ import { TaskboardComponent } from './taskboard/taskboard.component';
 import { ProjectboardComponent } from './projectboard/projectboard.component';
 import { AddNewProjectComponent } from './projectboard/add-new-project/add-new-project.component';
 import { FilterProjectComponent } from './projectboard/filter-project/filter-project.component';
-import {MatDialogRef, MAT_DIALOG_DATA, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule
+} from '@angular/material';
 import { AddNewTaskComponent } from './taskboard/add-new-task/add-new-task.component';
 import { FilterTaskComponent } from './taskboard/filter-task/filter-task.component';
 import { ClientboardComponent } from './clientboard/clientboard.component';
@@ -24,6 +35,14 @@ import { FilterUserComponent } from './userboard/filter-user/filter-user.compone
 import { TaskboardFilterPipe } from './taskboard/taskboard-filter.pipe';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { LoaderComponent } from './loader/loader.component';
+import { ProjectComponent } from './project/project.component';
+
+//Services
+
+import { ILabelService } from '../Services/Repository/RepositoryInterfaces/ILabelService';
+import { LabelService } from '../Services/Repository/RepositoryServices/LabelService'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +62,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     FilterUserComponent,
     TaskboardFilterPipe,
     MainHeaderComponent,
+    ProjectComponent,
+    LoaderComponent
   ],
   entryComponents: [
     AppComponent,
@@ -65,10 +86,13 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule,
+    MatListModule
   ],
-  providers: [{ provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: [] },],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
+    { provide: ILabelService, useClass: LabelService },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

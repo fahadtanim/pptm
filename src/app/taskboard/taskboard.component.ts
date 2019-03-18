@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ILabelService } from '../../Services/Repository/RepositoryInterfaces/ILabelService';
+import { ILabel } from '../../Models/Interfaces/ILabel';
+
 @Component({
   selector: 'app-taskboard',
   templateUrl: './taskboard.component.html',
   styleUrls: ['./taskboard.component.scss'],
 })
-
-
 export class TaskboardComponent implements OnInit {
 
   public taskStates: any;
@@ -13,16 +14,16 @@ export class TaskboardComponent implements OnInit {
   public selectedPriority: any;
   public selectedLabel: any;
   public priorities: any;
-  public labels: any;
+  public labels: ILabel[];
   public filterTaskValue: string;
-
-
 
   /* #########   FILTER TASK PROPERTY   ########### */
 
 
   public Tasks: any;
-  constructor() { }
+  constructor(public LabelServices: ILabelService) {
+
+  }
 
   ngOnInit() {
     this.taskStates = [
@@ -35,19 +36,7 @@ export class TaskboardComponent implements OnInit {
       { state : 'minor', viewState : 'Minor' },
       { state : 'severe', viewState : 'Severe' },
     ];
-    this.labels = [
-      { id : '1', color : '#b71c1c' },
-      { id : '2', color : '#880e4f' },
-      { id : '3', color : '#4a148c' },
-      { id : '4', color : '#1a237e' },
-      { id : '5', color : '#2962ff' },
-      { id : '6', color : '#004d40' },
-      { id : '7', color : '#1b5e20' },
-      { id : '8', color : '#827717' },
-      { id : '9', color : '#ff5722' },
-      { id : '10', color : '#3e2723' },
-      { id : '11', color : '#212121' },
-    ];
+    this.labels = this.LabelServices.getLabels();
     this.selectedTask = 'todo';
     this.selectedPriority = 'severe';
     this.selectedLabel = { id : '3', color : '#4a148c' };

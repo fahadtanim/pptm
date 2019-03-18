@@ -99,10 +99,10 @@
                   <div class="row">
                       <mat-select  class="col-3" [(value)]="task.label" placeholder="Label">
                         <mat-option *ngFor="let label of labels" [value]="label">
-                          <div class="label-options" [ngStyle]="{'background-color': label.color}" >{{label.color}}</div>
+                          <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
                         </mat-option>
                       </mat-select>
-                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.color}"></div>
+                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.label_value}"></div>
                   </div>
                 </div>
               </div>

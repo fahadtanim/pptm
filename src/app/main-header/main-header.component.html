@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar class="logo-container" (click)="drawer.toggle();menuToggleButton()">
+    <mat-toolbar class="logo-container header" (click)="drawer.toggle();menuToggleButton()">
       <div class="container">
         <div class="row ">
           <h1 class="logo-text">PPTM</h1>
