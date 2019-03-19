@@ -9,6 +9,7 @@ import { IProjectState } from '../Interfaces/IProjectState';
 export class Project implements IProject {
 
   project_id: string;
+  project_name: string;
   cid: string;
   jid: string;
   redmine_jef: string;

@@ -39,9 +39,17 @@ import { LoaderComponent } from './loader/loader.component';
 import { ProjectComponent } from './project/project.component';
 
 //Services
-
+//repository interfaces
 import { ILabelService } from '../Services/Repository/RepositoryInterfaces/ILabelService';
-import { LabelService } from '../Services/Repository/RepositoryServices/LabelService'
+import { ITaskStateService } from '../Services/Repository/RepositoryInterfaces/ITaskStateService';
+import { ITaskPriorityStateService } from '../Services/Repository/RepositoryInterfaces/ITaskPriorityStateService';
+import { ITaskService } from '../Services/Repository/RepositoryInterfaces/ITaskService';
+
+//repository services
+import { LabelService } from '../Services/Repository/RepositoryServices/LabelService';
+import { TaskStateService } from '../Services/Repository/RepositoryServices/TaskStateService';
+import { TaskPriorityStateService } from '../Services/Repository/RepositoryServices/TaskPriorityStateService';
+import { TaskService } from '../Services/Repository/RepositoryServices/TaskService';
 
 @NgModule({
   declarations: [
@@ -92,6 +100,9 @@ import { LabelService } from '../Services/Repository/RepositoryServices/LabelSer
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] },
     { provide: ILabelService, useClass: LabelService },
+    { provide: ITaskStateService, useClass: TaskStateService },
+    { provide: ITaskPriorityStateService, useClass: TaskPriorityStateService },
+    { provide: ITaskService, useClass: TaskService  },
   ],
   bootstrap: [AppComponent]
 })

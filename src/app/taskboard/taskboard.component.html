@@ -38,26 +38,30 @@
           </div>
         </div>
         <mat-accordion class="row task-board-container">
-          <mat-expansion-panel class="container" *ngFor="let task of Tasks | taskboardFilter:filterTaskValue">
+          <mat-expansion-panel class="container" *ngFor="let task of Tasks">
+
+            <!-- #### HEADER #######-->
             <mat-expansion-panel-header>
-              <mat-panel-title>{{task.name}}</mat-panel-title>
+              <mat-panel-title>{{task.task_name}}</mat-panel-title>
               <mat-panel-description class="justify-center">
-                <p class="col-4 content-center mat-desc-shortnote">{{task.short_note}}</p>
-                <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state" placeholder="Task State">
-                  <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
-                    {{taskState.viewState}}
+                <p class="col-4 content-center mat-desc-shortnote">{{task.shortnote}}</p>
+                <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state_id" placeholder="Task State">
+                  <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+                    {{taskState.task_state_value}}
                   </mat-option>
                 </mat-select>
-                <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.color}">
-                  {{task.priority_view_state}}
+
+                <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}">
+                  {{this.TaskPriorityStateServices.getTaskPriorityStateById(task.priority_state_id).priority_value}}
                 </div>
+
               </mat-panel-description>
             </mat-expansion-panel-header>
-
+            <!-- ######## HEADER ###########-->
             <div class="container-fluid">
               <div class="row task-name-container task-details-container">
                 <div class="col-2">Name</div>
-                <div class="col-8 offset-2">{{task.name}}</div>
+                <div class="col-8 offset-2">{{task.task_name}}</div>
               </div>
               <div class="row task-description-container task-details-container">
                 <div class="col-2">Description</div>
@@ -65,14 +69,14 @@
               </div>
               <div class="row task-short-note-container task-details-container">
                   <div class="col-2">Short Note</div>
-                  <div class="col-8 offset-2">{{task.short_note}}</div>
+                  <div class="col-8 offset-2">{{task.shortnote}}</div>
                 </div>
               <div class="row task-status-container task-details-container">
                 <div class="col-2">Task Status</div>
                 <div class="col-8 offset-2">
-                  <mat-select class="col-3" [(value)]="task.task_state" placeholder="Task State">
-                    <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
-                      {{taskState.viewState}}
+                  <mat-select class="col-3" [(value)]="task.task_state_id" placeholder="Task State">
+                    <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+                      {{taskState.task_state_value}}
                     </mat-option>
                   </mat-select>
                 </div>
@@ -86,9 +90,9 @@
               <div class="row task-priority-container task-details-container">
                 <div class="col-2">Priority Status</div>
                 <div class="col-8 offset-2">
-                  <mat-select class="col-3" [(value)]="task.priority_state" placeholder="Priority State">
-                    <mat-option *ngFor="let priority of priorities" [value]="priority.state">
-                      {{priority.viewState}}
+                  <mat-select class="col-3" [(value)]="task.priority_state_id" placeholder="Priority State">
+                    <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
+                      {{priority.priority_value}}
                     </mat-option>
                   </mat-select>
                 </div>
@@ -97,12 +101,14 @@
                 <div class="col-2">Label</div>
                 <div class="col-8 offset-2">
                   <div class="row">
-                      <mat-select  class="col-3" [(value)]="task.label" placeholder="Label">
-                        <mat-option *ngFor="let label of labels" [value]="label">
+
+                      <mat-select  class="col-3 task-color-label" [(value)]="task.label_id" placeholder="Label">
+                        <mat-option *ngFor="let label of labels" [value]="label.label_id">
                           <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
                         </mat-option>
                       </mat-select>
-                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': task.label.label_value}"></div>
+                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}"></div>
+
                   </div>
                 </div>
               </div>

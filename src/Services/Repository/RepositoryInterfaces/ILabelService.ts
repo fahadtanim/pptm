@@ -7,5 +7,5 @@ import { Injectable } from '@angular/core';
 export abstract class ILabelService {
   abstract getLabels(): ILabel[];
   abstract getLabelById( id ): ILabel;
-  abstract getLabelByValue( value ): ILabel[];
+  abstract getLabelsByValue( value ): ILabel[];
 }

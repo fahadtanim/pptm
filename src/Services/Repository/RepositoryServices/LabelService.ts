@@ -1,18 +1,18 @@
-import { ILabelService } from "../RepositoryInterfaces/ILabelService";
-import { ILabel } from "src/Models/Interfaces/ILabel";
+import { ILabelService } from '../RepositoryInterfaces/ILabelService';
+import { ILabel } from 'src/Models/Interfaces/ILabel';
 import { Label } from '../../../Models/Entities/Label';
 import { Injectable } from '@angular/core';
 
 let labels = [
-  new Label('1', '#b71c1c'),
-  new Label('2', '#880e4f'),
-  new Label('3', '#4a148c'),
-  new Label('4', '#1a237e'),
-  new Label('5', '#2962ff'),
-  new Label('6', '#004d40'),
-  new Label('7', '#1b5e20'),
-  new Label('8', '#827717'),
-  new Label('9', '#ff5722'),
+  { label_id: '1', label_value: '#b71c1c' },
+  { label_id: '2', label_value: '#880e4f' },
+  { label_id: '3', label_value: '#4a148c' },
+  { label_id: '4', label_value: '#1a237e' },
+  { label_id: '5', label_value: '#2962ff' },
+  { label_id: '6', label_value: '#004d40' },
+  { label_id: '7', label_value: '#1b5e20' },
+  { label_id: '8', label_value: '#827717' },
+  { label_id: '9', label_value: '#ff5722' },
 ];
 
 @Injectable()
@@ -23,7 +23,7 @@ export class LabelService implements ILabelService {
   getLabelById( id ): ILabel {
     return labels.find( x => x.label_id == id );
   }
-  getLabelByValue( value ): ILabel[] {
+  getLabelsByValue( value ): ILabel[] {
     return labels.filter( x => x.label_value == value );
   }
 }
