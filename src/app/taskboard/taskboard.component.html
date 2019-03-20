@@ -7,7 +7,7 @@
             <h1 class="pptm-page-title">Task Board</h1>
           </div>
         </div>
-        <div class="row">
+        <div class="row justify-center">
           <div class="col-4">
             <mat-form-field class="full-width pptm-input-form-full">
               <input matInput type="text" placeholder="Filter Task" [(ngModel)]="filterTaskValue" [ngModelOptions]="{standalone: true}">
@@ -19,15 +19,31 @@
 
           <!--#######   TASK CUSTOM FILTER   #######-->
           <div class="col-4">
-            <div class="row justify-center task-filter-container">
+            <div class="row justify-center">
               <mat-expansion-panel class="content-center container-fluid">
                 <mat-expansion-panel-header>
                     <mat-panel-title>Custom Filter</mat-panel-title>
                     <mat-panel-description class="justify-end"><mat-icon>filter_list</mat-icon></mat-panel-description>
                 </mat-expansion-panel-header>
-                <div class="container-fluid">
-
-                </div>
+                <mat-form-field>
+                  <mat-select [(value)]="customFilterProperty" placeholder="Task Filter Property" (selectionChange)='this.onChangeFilter()'>
+                    <mat-option  value="task_name">Task Name</mat-option>
+                    <mat-option  value="shortnote">Short Note</mat-option>
+                    <mat-option  value="description">Description</mat-option>
+                    <mat-option  value="cid">CID</mat-option>
+                    <mat-option  value="jid">JID</mat-option>
+                    <mat-option  value="task_state">Task State</mat-option>
+                    <mat-option  value="priority_state">Priority State</mat-option>
+                    <mat-option  value="task_token">Task Token</mat-option>
+                    <mat-option  value="conversation_token">Conversation Token</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type = "text" placeholder="Filter" [(ngModel)]='customFilterValue'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+                  <button mat-button *ngIf="customFilterValue" matSuffix mat-icon-button aria-label="Clear" (click)="customFilterValue=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
               </mat-expansion-panel>
             </div>
           </div>
@@ -38,12 +54,12 @@
           </div>
         </div>
         <mat-accordion class="row task-board-container">
-          <mat-expansion-panel class="container" *ngFor="let task of Tasks">
+          <mat-expansion-panel class="container" *ngFor="let task of this.filterFullTasks(filterTaskValue)">
 
             <!-- #### HEADER #######-->
             <mat-expansion-panel-header>
               <mat-panel-title>{{task.task_name}}</mat-panel-title>
-              <mat-panel-description class="justify-center">
+              <mat-panel-description class="row justify-end">
                 <p class="col-4 content-center mat-desc-shortnote">{{task.shortnote}}</p>
                 <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state_id" placeholder="Task State">
                   <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
