@@ -1,5 +1,6 @@
 import { ITaskService } from '../RepositoryInterfaces/ITaskService';
 import { ITask } from 'src/Models/Interfaces/ITask';
+import { Task } from 'src/Models/Entities/Task';
 
 let tasks = [
   {
@@ -64,5 +65,21 @@ export class TaskService implements ITaskService {
   }
   getTasksByJid( jid: string ): ITask[]{
     return tasks.filter( x => x.jid.toLowerCase().includes( jid.toLowerCase() ) );
+  }
+
+  addNewTask( cid, jid, taskName, shortnote, description, deadline, priority, taskState, label ) {
+    let tmp = new Task();
+    tmp.task_id = tasks.length;
+    tmp.cid = cid;
+    tmp.jid = jid;
+    tmp.task_name = taskName;
+    tmp.shortnote = shortnote;
+    tmp.description = description;
+    tmp.deadline = deadline;
+    tmp.priority_state_id = priority;
+    tmp.task_state_id = taskState;
+    tmp.label_id = label;
+
+    tasks.push(tmp);
   }
 }

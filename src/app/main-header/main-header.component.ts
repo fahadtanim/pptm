@@ -20,13 +20,12 @@ export class MainHeaderComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,public dialog: MatDialog) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
+    this.visibleMenu = true;
+  }
 
   ngOnInit() {
-    this.visibleMenu = false;
-  }
-  menuToggleButton() {
-    this.visibleMenu = (this.visibleMenu) ? false : true;
+    this.visibleMenu = true;
   }
   openAddNewProjectDialogue() {
     const dialogRef = this.dialog.open(AddNewProjectComponent, {

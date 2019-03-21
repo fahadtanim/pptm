@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatSnackBar
+} from '@angular/material';
+import { ITaskStateService } from 'src/Services/Repository/RepositoryInterfaces/ITaskStateService';
+import { ITaskPriorityStateService } from 'src/Services/Repository/RepositoryInterfaces/ITaskPriorityStateService';
+import { ILabelService } from 'src/Services/Repository/RepositoryInterfaces/ILabelService';
+import { Task } from 'src/Models/Entities/Task';
+import { TaskService } from 'src/Services/Repository/RepositoryServices/TaskService';
+import { ITaskService } from 'src/Services/Repository/RepositoryInterfaces/ITaskService';
 @Component({
   selector: 'app-add-new-task',
   templateUrl: './add-new-task.component.html',
   styleUrls: ['./add-new-task.component.scss']
 })
-
-
-
-
 export class AddNewTaskComponent implements OnInit {
-
   public taskName: string;
   public cid: string;
   public jid: string;
@@ -18,41 +24,61 @@ export class AddNewTaskComponent implements OnInit {
   public projectName: string;
   public shortNote: string;
   public description: string;
+  public taskStateId: any;
+  public priorityStateId: any;
+  public labelId: any;
+  public taskDeadline: any;
   public priorities: any;
   public taskStates: any;
   public scheduleStartNotifyTime: any;
   public labels: any;
-  constructor(public dialogRef: MatDialogRef<AddNewTaskComponent>) {
+  public snackBarRef: any;
+  constructor(
+    public dialogRef: MatDialogRef<AddNewTaskComponent>,
+    private snackBar: MatSnackBar,
+    public taskStateServices: ITaskStateService,
+    public priorityServices: ITaskPriorityStateService,
+    public labelServices: ILabelService,
+    public taskServices: ITaskService
+  ) {
     this.taskName = '';
     this.projectName = 'test';
     this.projectNameVisibility = false;
-    this.taskStates = [
-      { state : 'todo', viewState : 'To Do' },
-      { state : 'doing', viewState : 'Doing' },
-      { state : 'done', viewState : 'Done' }
-    ];
-    this.priorities = [
-      { state : 'major', viewState : 'Major' },
-      { state : 'minor', viewState : 'Minor' },
-      { state : 'severe', viewState : 'Severe' },
-    ];
-
-    this.labels = [
-      { id : '1', color : '#b71c1c' },
-      { id : '2', color : '#880e4f' },
-      { id : '3', color : '#4a148c' },
-      { id : '4', color : '#1a237e' },
-      { id : '5', color : '#2962ff' },
-      { id : '6', color : '#004d40' },
-      { id : '7', color : '#1b5e20' },
-      { id : '8', color : '#827717' },
-      { id : '9', color : '#ff5722' },
-      { id : '10', color : '#3e2723' },
-      { id : '11', color : '#212121' },
-    ];
+    this.taskStates = this.taskStateServices.getTaskStates();
+    this.priorities = this.priorityServices.getTaskPriorityStates();
+    this.labels = this.labelServices.getLabels();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  submitTaskData() {
+    this.taskServices.addNewTask(
+      this.cid,
+      this.jid,
+      this.taskName,
+      this.shortNote,
+      this.description,
+      this.taskDeadline,
+      this.priorityStateId,
+      this.taskStateId,
+      this.labelId
+    );
+    this.snackBarRef = this.snackBar.open(
+      'Task Added Successfully !!!',
+      'close',
+      {
+        duration: 2000
+      }
+    );
+
+    this.snackBarRef.afterDismissed().subscribe(() => {
+      console.log('The snack-bar was dismissed');
+    });
+
+    this.snackBarRef.onAction().subscribe(() => {
+      console.log('The snack-bar action was triggered!');
+    });
+
+    //this.snackBarRef.dismiss();
+  }
 }

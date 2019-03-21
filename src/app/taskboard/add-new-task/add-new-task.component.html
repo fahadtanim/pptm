@@ -34,40 +34,33 @@
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-left">
-        <mat-select placeholder="Priority State">
-          <mat-option *ngFor="let priority of priorities" [value]="priority.state">
-            {{priority.viewState}}
+        <mat-select placeholder="Priority State" (value)="priorityStateId">
+          <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
+            {{priority.priority_value}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-right">
-        <mat-select placeholder="Task State">
-          <mat-option *ngFor="let taskState of taskStates" [value]="taskState.state">
-            {{taskState.viewState}}
+        <mat-select placeholder="Task State" (value) = "taskStateId">
+          <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+            {{taskState.task_state_value}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-left">
-        <input matInput [matDatepicker]="picker" placeholder="Deadline" required>
+        <input matInput [matDatepicker]="picker" placeholder="Deadline" required [(ngModel)] = 'taskDeadline'>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-right">
-        <mat-select placeholder="Label">
-          <mat-option *ngFor="let label of labels" [value]="label.id">
-            <div class="label-options" [ngStyle]="{'background-color': label.color}" >{{label.color}}</div>
+        <mat-select placeholder="Label" [value] = 'labelId'>
+          <mat-option *ngFor="let label of labels" [value]="label.label_id">
+            <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
           </mat-option>
         </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="full-width pptm-input-form-full">
-        <input matInput type="datetime-local" placeholder="Schedule Start notify time" [(ngModel)]="scheduleStartNotifyTime" [ngModelOptions]="{standalone: true}">
-        <button mat-button *ngIf="scheduleStartNotifyTime" matSuffix mat-icon-button aria-label="Clear" (click)="scheduleStartNotifyTime=''">
-          <mat-icon>close</mat-icon>
-        </button>
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-full">
@@ -79,7 +72,7 @@
       <div class="row">
         <div class="container">
           <div class="row input-form-button-container">
-              <button type='submit' class='pptm-input-submit-button' mat-raised-button matTooltip='Add New Task' color='primary'>Create</button>
+              <button type='submit' class='pptm-input-submit-button' mat-raised-button matTooltip='Add New Task' color='primary' (click)="submitTaskData()">Create</button>
               <button mat-raised-button class="pptm-input-cancel-button" matTooltip='Cancel Task Creation Process' color="primary">Cancel</button>
           </div>
         </div>

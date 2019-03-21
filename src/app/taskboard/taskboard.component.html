@@ -1,155 +1,232 @@
-<div class="container-fluid pptm-theme-light">
-  <div class="row">
-    <div class="col-12">
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer  class="col-2 side-bar-menu sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="filterVisibility"
+      >
+    <mat-toolbar class="logo-container header" (click)="drawer.toggle();menuToggleButton()">
       <div class="container">
-        <div class="row task-board-header">
-          <div class="col-3">
-            <h1 class="pptm-page-title">Task Board</h1>
-          </div>
+        <div class="row ">
+          <h1 class="logo-text">Filter Tasks</h1>
         </div>
-        <div class="row justify-center">
-          <div class="col-4">
-            <mat-form-field class="full-width pptm-input-form-full">
-              <input matInput type="text" placeholder="Filter Task" [(ngModel)]="filterTaskValue" [ngModelOptions]="{standalone: true}">
-              <button mat-button *ngIf="filterTaskValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterTaskValue=''">
-                <mat-icon>close</mat-icon>
-              </button>
-            </mat-form-field>
-          </div>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list class="container-fluid">
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter CID" [(ngModel)]='customCidFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customCidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customCidFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter JID" [(ngModel)]='customJidFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customJidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customJidFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter Task Name" [(ngModel)]='customTaskNameFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customTaskNameFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskNameFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter Short Note" [(ngModel)]='customShortNoteFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customShortNoteFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customShortNoteFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter Description" [(ngModel)]='customDescriptionFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customDescriptionFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customDescriptionFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(value)]="customTaskStateFilter" placeholder="Filter Task Status" (selectionChange)='this.onChangeFilter()'>
+          <mat-option value = ''>None</mat-option>
+          <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+            {{taskState.task_state_value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(value)]="customPriorityStateFilter" placeholder="Filter Priority Status" (selectionChange)='this.onChangeFilter()'>
+          <mat-option value = ''>None</mat-option>
+          <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
+            {{priority.priority_value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter Task Token" [(ngModel)]='customTaskTokenFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customTaskTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskTokenFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type = "text" placeholder="Filter Conversation Token" [(ngModel)]='customConversationTokenFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
+        <button mat-button *ngIf="customConversationTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customConversationTokenFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select  class="task-color-label" [(value)]="customLabelFilter" placeholder="Label" (selectionChange)='this.onChangeFilter()'>
+          <mat-option value = ''>None</mat-option>
+          <mat-option *ngFor="let label of labels" [value]="label.label_id">
+            <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
+          </mat-option>
+        </mat-select>
+        <!--<div class="col-3 offset-2 label-options content-center" *ngIf='customLabelFilter != null || customLabelFilter != ""' [ngStyle]="{'background-color': this.LabelServices.getLabelById(customLabelFilter).label_value}"></div>-->
+      </mat-form-field>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="main-header">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle();menuToggleButton()"
+        >
+        <mat-icon aria-label="Side nav toggle icon">filter_list</mat-icon>
+      </button>
+      <span>Task board</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
 
-          <!--#######   TASK CUSTOM FILTER   #######-->
-          <div class="col-4">
-            <div class="row justify-center">
-              <mat-expansion-panel class="content-center container-fluid">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>Custom Filter</mat-panel-title>
-                    <mat-panel-description class="justify-end"><mat-icon>filter_list</mat-icon></mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                  <mat-select [(value)]="customFilterProperty" placeholder="Task Filter Property" (selectionChange)='this.onChangeFilter()'>
-                    <mat-option  value="task_name">Task Name</mat-option>
-                    <mat-option  value="shortnote">Short Note</mat-option>
-                    <mat-option  value="description">Description</mat-option>
-                    <mat-option  value="cid">CID</mat-option>
-                    <mat-option  value="jid">JID</mat-option>
-                    <mat-option  value="task_state">Task State</mat-option>
-                    <mat-option  value="priority_state">Priority State</mat-option>
-                    <mat-option  value="task_token">Task Token</mat-option>
-                    <mat-option  value="conversation_token">Conversation Token</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                  <input matInput type = "text" placeholder="Filter" [(ngModel)]='customFilterValue'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-                  <button mat-button *ngIf="customFilterValue" matSuffix mat-icon-button aria-label="Clear" (click)="customFilterValue=''">
+
+    <div class="container-fluid pptm-theme-light">
+      <div class="row">
+        <div class="col-12">
+          <div class="container">
+            <div class="row task-board-header">
+
+            </div>
+            <div class="row justify-space-between">
+              <div class="col-4">
+                <mat-form-field class="full-width pptm-input-form-full">
+                  <input matInput type="text" placeholder="Filter Task" [(ngModel)]="filterTaskValue" [ngModelOptions]="{standalone: true}">
+                  <button mat-button *ngIf="filterTaskValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterTaskValue=''">
                     <mat-icon>close</mat-icon>
                   </button>
                 </mat-form-field>
-              </mat-expansion-panel>
+              </div>
+
+              <div class="col-3 offset-1 justify-space-between">
+                <button class="create-task-btn content-center" mat-raised-button color='primary'>Add New Task</button>
+              </div>
             </div>
-          </div>
+            <mat-accordion class="row task-board-container">
+              <mat-expansion-panel class="container" *ngFor="let task of this.filterFullTasks(filterTaskValue)">
 
+                <!-- #### HEADER #######-->
+                <mat-expansion-panel-header>
+                  <mat-panel-title>{{task.task_name}}</mat-panel-title>
+                  <mat-panel-description class="row justify-end">
+                    <p class="col-4 content-center mat-desc-shortnote">{{task.shortnote}}</p>
+                    <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state_id" placeholder="Task State">
+                      <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+                        {{taskState.task_state_value}}
+                      </mat-option>
+                    </mat-select>
 
-          <div class="col-3 offset-1 justify-space-between">
-            <button class="create-task-btn content-center" mat-raised-button color='primary'>Add New Task</button>
-          </div>
-        </div>
-        <mat-accordion class="row task-board-container">
-          <mat-expansion-panel class="container" *ngFor="let task of this.filterFullTasks(filterTaskValue)">
+                    <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}">
+                      {{this.TaskPriorityStateServices.getTaskPriorityStateById(task.priority_state_id).priority_value}}
+                    </div>
 
-            <!-- #### HEADER #######-->
-            <mat-expansion-panel-header>
-              <mat-panel-title>{{task.task_name}}</mat-panel-title>
-              <mat-panel-description class="row justify-end">
-                <p class="col-4 content-center mat-desc-shortnote">{{task.shortnote}}</p>
-                <mat-select class="col-3 offset-1 content-center" [(value)]="task.task_state_id" placeholder="Task State">
-                  <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
-                    {{taskState.task_state_value}}
-                  </mat-option>
-                </mat-select>
-
-                <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}">
-                  {{this.TaskPriorityStateServices.getTaskPriorityStateById(task.priority_state_id).priority_value}}
-                </div>
-
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <!-- ######## HEADER ###########-->
-            <div class="container-fluid">
-              <div class="row task-name-container task-details-container">
-                <div class="col-2">Name</div>
-                <div class="col-8 offset-2">{{task.task_name}}</div>
-              </div>
-              <div class="row task-description-container task-details-container">
-                <div class="col-2">Description</div>
-                <div class="col-8 offset-2">{{task.description}}</div>
-              </div>
-              <div class="row task-short-note-container task-details-container">
-                  <div class="col-2">Short Note</div>
-                  <div class="col-8 offset-2">{{task.shortnote}}</div>
-                </div>
-              <div class="row task-status-container task-details-container">
-                <div class="col-2">Task Status</div>
-                <div class="col-8 offset-2">
-                  <mat-select class="col-3" [(value)]="task.task_state_id" placeholder="Task State">
-                    <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
-                      {{taskState.task_state_value}}
-                    </mat-option>
-                  </mat-select>
-                </div>
-              </div>
-              <div class="row task-deadline-container task-details-container">
-                <div class="col-2">Deadline</div>
-                <div class="col-8 offset-2">
-                  {{task.deadline}}
-                </div>
-              </div>
-              <div class="row task-priority-container task-details-container">
-                <div class="col-2">Priority Status</div>
-                <div class="col-8 offset-2">
-                  <mat-select class="col-3" [(value)]="task.priority_state_id" placeholder="Priority State">
-                    <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
-                      {{priority.priority_value}}
-                    </mat-option>
-                  </mat-select>
-                </div>
-              </div>
-              <div class="row task-label-container task-details-container">
-                <div class="col-2">Label</div>
-                <div class="col-8 offset-2">
-                  <div class="row">
-
-                      <mat-select  class="col-3 task-color-label" [(value)]="task.label_id" placeholder="Label">
-                        <mat-option *ngFor="let label of labels" [value]="label.label_id">
-                          <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!-- ######## HEADER ###########-->
+                <div class="container-fluid">
+                  <div class="row task-name-container task-details-container">
+                    <div class="col-2">Name</div>
+                    <div class="col-8 offset-2">{{task.task_name}}</div>
+                  </div>
+                  <div class="row task-description-container task-details-container">
+                    <div class="col-2">Description</div>
+                    <div class="col-8 offset-2">{{task.description}}</div>
+                  </div>
+                  <div class="row task-short-note-container task-details-container">
+                      <div class="col-2">Short Note</div>
+                      <div class="col-8 offset-2">{{task.shortnote}}</div>
+                    </div>
+                  <div class="row task-status-container task-details-container">
+                    <div class="col-2">Task Status</div>
+                    <div class="col-8 offset-2">
+                      <mat-select class="col-3" [(value)]="task.task_state_id" placeholder="Task State">
+                        <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
+                          {{taskState.task_state_value}}
                         </mat-option>
                       </mat-select>
-                      <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}"></div>
+                    </div>
+                  </div>
+                  <div class="row task-deadline-container task-details-container">
+                    <div class="col-2">Deadline</div>
+                    <div class="col-8 offset-2">
+                      {{task.deadline}}
+                    </div>
+                  </div>
+                  <div class="row task-priority-container task-details-container">
+                    <div class="col-2">Priority Status</div>
+                    <div class="col-8 offset-2">
+                      <mat-select class="col-3" [(value)]="task.priority_state_id" placeholder="Priority State">
+                        <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
+                          {{priority.priority_value}}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="row task-label-container task-details-container">
+                    <div class="col-2">Label</div>
+                    <div class="col-8 offset-2">
+                      <div class="row">
 
+                          <mat-select  class="col-3 task-color-label" [(value)]="task.label_id" placeholder="Label">
+                            <mat-option *ngFor="let label of labels" [value]="label.label_id">
+                              <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
+                            </mat-option>
+                          </mat-select>
+                          <div class="col-3 offset-2 label-options content-center" [ngStyle]="{'background-color': this.LabelServices.getLabelById(task.label_id).label_value}"></div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row task-cid-container task-details-container">
+                    <div class="col-2">CID</div>
+                    <div class="col-8 offset-2">
+                      {{task.cid}}
+                    </div>
+                  </div>
+                  <div class="row task-jid-container task-details-container">
+                    <div class="col-2">JID</div>
+                    <div class="col-8 offset-2">
+                      {{task.jid}}
+                    </div>
+                    </div>
+                  <div class="row task-details-container justify-space-between">
+                      <button  mat-raised-button color='primary'>Edit Task</button>
+                      <button  mat-raised-button color='primary'>Delete Task</button>
                   </div>
                 </div>
-              </div>
-              <div class="row task-cid-container task-details-container">
-                <div class="col-2">CID</div>
-                <div class="col-8 offset-2">
-                  {{task.cid}}
-                </div>
-              </div>
-              <div class="row task-jid-container task-details-container">
-                <div class="col-2">JID</div>
-                <div class="col-8 offset-2">
-                  {{task.jid}}
-                </div>
-                </div>
-              <div class="row task-details-container justify-space-between">
-                  <button  mat-raised-button color='primary'>Edit Task</button>
-                  <button  mat-raised-button color='primary'>Delete Task</button>
-              </div>
-            </div>
 
-          </mat-expansion-panel>
+              </mat-expansion-panel>
 
-        </mat-accordion>
+            </mat-accordion>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+<!-- ################### TASK BOARD COMPONENT ##################-->
+
