@@ -63,6 +63,7 @@ export class AddNewTaskComponent implements OnInit {
       this.taskStateId,
       this.labelId
     );
+    this.dialogRef.close();
     this.snackBarRef = this.snackBar.open(
       'Task Added Successfully !!!',
       'close',
