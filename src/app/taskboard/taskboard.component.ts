@@ -12,6 +12,8 @@ import { Task } from 'src/Models/Entities/Task';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { AddNewTaskComponent } from './add-new-task/add-new-task.component';
 @Component({
   selector: 'app-taskboard',
   templateUrl: './taskboard.component.html',
@@ -43,7 +45,8 @@ export class TaskboardComponent implements OnInit {
     public TaskStateServices: ITaskStateService,
     public TaskPriorityStateServices: ITaskPriorityStateService,
     public TaskServices: ITaskService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog
   ) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -274,6 +277,14 @@ export class TaskboardComponent implements OnInit {
       let customTask = tasks.filter(task => task.label_id == value);
       return customTask;
     }
+  }
+
+  openAddNewTaskDialogue(){
+    const dialogRef = this.dialog.open(AddNewTaskComponent, {
+      width: '100vw',
+      height: 'auto',
+      maxWidth: '500px',
+    });
   }
 
 }

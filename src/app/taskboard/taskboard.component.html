@@ -14,31 +14,31 @@
     <mat-nav-list class="container-fluid">
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter CID" [(ngModel)]='customCidFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customCidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customCidFilter=''">
+        <button mat-button *ngIf="customCidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customCidFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter JID" [(ngModel)]='customJidFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customJidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customJidFilter=''">
+        <button mat-button *ngIf="customJidFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customJidFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter Task Name" [(ngModel)]='customTaskNameFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customTaskNameFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskNameFilter=''">
+        <button mat-button *ngIf="customTaskNameFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskNameFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter Short Note" [(ngModel)]='customShortNoteFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customShortNoteFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customShortNoteFilter=''">
+        <button mat-button *ngIf="customShortNoteFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customShortNoteFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter Description" [(ngModel)]='customDescriptionFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customDescriptionFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customDescriptionFilter=''">
+        <button mat-button *ngIf="customDescriptionFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customDescriptionFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -60,13 +60,13 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter Task Token" [(ngModel)]='customTaskTokenFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customTaskTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskTokenFilter=''">
+        <button mat-button *ngIf="customTaskTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customTaskTokenFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
       <mat-form-field>
         <input matInput type = "text" placeholder="Filter Conversation Token" [(ngModel)]='customConversationTokenFilter'[ngModelOptions]="{standalone: true}" (input)='this.onChangeFilter()'>
-        <button mat-button *ngIf="customConversationTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customConversationTokenFilter=''">
+        <button mat-button *ngIf="customConversationTokenFilter" matSuffix mat-icon-button aria-label="Clear" (click)="customConversationTokenFilter='';this.onChangeFilter()">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -114,7 +114,7 @@
               </div>
 
               <div class="col-3 offset-1 justify-space-between">
-                <button class="create-task-btn content-center" mat-raised-button color='primary'>Add New Task</button>
+                <button class="create-task-btn content-center" mat-raised-button color='primary' (click)="openAddNewTaskDialogue()">Add New Task</button>
               </div>
             </div>
             <mat-accordion class="row task-board-container">

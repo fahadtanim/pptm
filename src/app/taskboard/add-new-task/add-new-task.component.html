@@ -34,7 +34,7 @@
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-left">
-        <mat-select placeholder="Priority State" (value)="priorityStateId">
+        <mat-select placeholder="Priority State" [(value)]="priorityStateId">
           <mat-option *ngFor="let priority of priorities" [value]="priority.priority_id">
             {{priority.priority_value}}
           </mat-option>
@@ -42,7 +42,7 @@
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-right">
-        <mat-select placeholder="Task State" (value) = "taskStateId">
+        <mat-select placeholder="Task State" [(value)] = "taskStateId">
           <mat-option *ngFor="let taskState of taskStates" [value]="taskState.task_state_id">
             {{taskState.task_state_value}}
           </mat-option>
@@ -50,13 +50,13 @@
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-left">
-        <input matInput [matDatepicker]="picker" placeholder="Deadline" required [(ngModel)] = 'taskDeadline'>
+        <input matInput [matDatepicker]="picker" placeholder="Deadline" required [(ngModel)] = 'taskDeadline' [ngModelOptions]="{standalone: true}">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="full-width pptm-input-form-half-right">
-        <mat-select placeholder="Label" [value] = 'labelId'>
+        <mat-select placeholder="Label" [(value)] = 'labelId'>
           <mat-option *ngFor="let label of labels" [value]="label.label_id">
             <div class="label-options" [ngStyle]="{'background-color': label.label_value}" >{{label.label_value}}</div>
           </mat-option>

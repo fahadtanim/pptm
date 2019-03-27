@@ -9,15 +9,21 @@
       </mat-form-field>
 
       <mat-form-field class="pptm-input-form-half-left">
-          <input matInput type="text" placeholder="CID" [(ngModel)]="cid" [ngModelOptions]="{standalone: true}" required>
-          <button mat-button *ngIf="cid" matSuffix mat-icon-button aria-label="Clear" (click)="cid=''">
+          <input matInput type="text" placeholder="CID" [(ngModel)]="clientCid" [ngModelOptions]="{standalone: true}" required>
+          <button mat-button *ngIf="clientCid" matSuffix mat-icon-button aria-label="Clear" (click)="clientCid=''">
             <mat-icon>close</mat-icon>
           </button>
+      </mat-form-field>
+      <mat-form-field class="full-width pptm-input-form-full">
+        <textarea matInput type="text" placeholder="Description" [(ngModel)]="clientDescription" [ngModelOptions]="{standalone: true}"></textarea>
+        <button mat-button *ngIf="clientDescription" matSuffix mat-icon-button aria-label="Clear" (click)="clientDescription=''">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
       <div class="row">
         <div class="container">
           <div class="row input-form-button-container">
-            <button type='submit' class='pptm-input-form-submit-button' mat-raised-button matTooltip='Add New Client' color='primary'>Create</button>
+            <button type='submit' class='pptm-input-form-submit-button' mat-raised-button matTooltip='Add New Client' color='primary' (click)="onClientSubmit()">Create</button>
             <button mat-raised-button class="pptm-input-form-cancel-button" matTooltip='Cancel Client Creation Process' color="primary">Cancel</button>
           </div>
         </div>

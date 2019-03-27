@@ -69,7 +69,7 @@ export class TaskService implements ITaskService {
 
   addNewTask( cid, jid, taskName, shortnote, description, deadline, priority, taskState, label ) {
     let tmp = new Task();
-    tmp.task_id = tasks.length;
+    tmp.task_id = tasks.length + '';
     tmp.cid = cid;
     tmp.jid = jid;
     tmp.task_name = taskName;
@@ -79,7 +79,9 @@ export class TaskService implements ITaskService {
     tmp.priority_state_id = priority;
     tmp.task_state_id = taskState;
     tmp.label_id = label;
-
+    tmp.task_token = cid + jid + 'T' + taskName.length;
+    tmp.conversation_token = ['faka'];
     tasks.push(tmp);
+    console.log(tasks);
   }
 }

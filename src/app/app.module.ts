@@ -50,6 +50,9 @@ import { LabelService } from '../Services/Repository/RepositoryServices/LabelSer
 import { TaskStateService } from '../Services/Repository/RepositoryServices/TaskStateService';
 import { TaskPriorityStateService } from '../Services/Repository/RepositoryServices/TaskPriorityStateService';
 import { TaskService } from '../Services/Repository/RepositoryServices/TaskService';
+import { IClientService } from 'src/Services/Repository/RepositoryInterfaces/IClientService';
+import { ClientService } from 'src/Services/Repository/RepositoryServices/ClientService';
+import { EditClientComponent } from './clientboard/edit-client/edit-client.component';
 
 @NgModule({
   declarations: [
@@ -71,13 +74,15 @@ import { TaskService } from '../Services/Repository/RepositoryServices/TaskServi
     TaskboardFilterPipe,
     MainHeaderComponent,
     ProjectComponent,
-    LoaderComponent
+    LoaderComponent,
+    EditClientComponent
   ],
   entryComponents: [
     AppComponent,
     AddNewProjectComponent,
     AddNewTaskComponent,
     AddNewClientComponent,
+    EditClientComponent,
     AddNewUserComponent,
     ProjectboardComponent,
     MainHeaderComponent
@@ -103,6 +108,7 @@ import { TaskService } from '../Services/Repository/RepositoryServices/TaskServi
     { provide: ITaskStateService, useClass: TaskStateService },
     { provide: ITaskPriorityStateService, useClass: TaskPriorityStateService },
     { provide: ITaskService, useClass: TaskService  },
+    { provide: IClientService, useClass: ClientService  },
   ],
   bootstrap: [AppComponent]
 })

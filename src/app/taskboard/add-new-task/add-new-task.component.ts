@@ -52,6 +52,7 @@ export class AddNewTaskComponent implements OnInit {
   ngOnInit() {}
 
   submitTaskData() {
+
     this.taskServices.addNewTask(
       this.cid,
       this.jid,
