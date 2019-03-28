@@ -23,7 +23,7 @@ export class MainHeaderComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
     this.visibleMenu = true;
   }
-
+  menuToggleButton(){}
   ngOnInit() {
     this.visibleMenu = true;
   }

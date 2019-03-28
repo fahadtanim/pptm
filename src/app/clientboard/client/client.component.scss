@@ -1,0 +1,29 @@
+.client-header{
+  padding-top:30px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.client-description-container{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  & > div:nth-of-type(odd){
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgba(200, 200, 200, 0.4);
+    p{
+      margin: 0px;
+    }
+  }
+
+  & > div:nth-of-type(even){
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgba(200, 200, 200, 0.9);
+    p{
+      margin: 0px;
+    }
+  }
+
+}

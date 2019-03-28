@@ -53,6 +53,7 @@ import { TaskService } from '../Services/Repository/RepositoryServices/TaskServi
 import { IClientService } from 'src/Services/Repository/RepositoryInterfaces/IClientService';
 import { ClientService } from 'src/Services/Repository/RepositoryServices/ClientService';
 import { EditClientComponent } from './clientboard/edit-client/edit-client.component';
+import { ClientComponent } from './clientboard/client/client.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { EditClientComponent } from './clientboard/edit-client/edit-client.compo
     MainHeaderComponent,
     ProjectComponent,
     LoaderComponent,
-    EditClientComponent
+    EditClientComponent,
+    ClientComponent
   ],
   entryComponents: [
     AppComponent,
