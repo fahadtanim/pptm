@@ -54,6 +54,11 @@ import { IClientService } from 'src/Services/Repository/RepositoryInterfaces/ICl
 import { ClientService } from 'src/Services/Repository/RepositoryServices/ClientService';
 import { EditClientComponent } from './clientboard/edit-client/edit-client.component';
 import { ClientComponent } from './clientboard/client/client.component';
+import { IUserService } from 'src/Services/Repository/RepositoryInterfaces/IUserService';
+import { UserService } from 'src/Services/Repository/RepositoryServices/UserService';
+import { IUserRoleService } from 'src/Services/Repository/RepositoryInterfaces/IUserRoleService';
+import { UserRoleService } from 'src/Services/Repository/RepositoryServices/UserRoleService';
+import { UserComponent } from './userboard/user/user.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +82,8 @@ import { ClientComponent } from './clientboard/client/client.component';
     ProjectComponent,
     LoaderComponent,
     EditClientComponent,
-    ClientComponent
+    ClientComponent,
+    UserComponent
   ],
   entryComponents: [
     AppComponent,
@@ -111,6 +117,8 @@ import { ClientComponent } from './clientboard/client/client.component';
     { provide: ITaskPriorityStateService, useClass: TaskPriorityStateService },
     { provide: ITaskService, useClass: TaskService  },
     { provide: IClientService, useClass: ClientService  },
+    { provide: IUserService, useClass: UserService  },
+    { provide: IUserRoleService, useClass: UserRoleService  },
   ],
   bootstrap: [AppComponent]
 })

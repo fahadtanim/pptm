@@ -62,13 +62,13 @@
           <button mat-button class="sidebar-menus" (click)=openAddNewTaskDialogue()>
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">queue</mat-icon>
-                <span class="col-9 sidebar-menus-title">Add New Task</span>
+                <span class="col-9 sidebar-menus-title">Create Task</span>
             </div>
           </button>
           <button mat-button class="sidebar-menus">
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
-                <span class="col-9 sidebar-menus-title">Filter Task</span>
+                <span class="col-9 sidebar-menus-title">Find Task</span>
             </div>
           </button>
         </mat-expansion-panel>
@@ -90,14 +90,14 @@
           <button mat-button class="sidebar-menus" (click)=openAddNewClientDialogue()>
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">queue</mat-icon>
-                <span class="col-9 sidebar-menus-title">Add New Client</span>
+                <span class="col-9 sidebar-menus-title">Create Client</span>
             </div>
           </button>
 
           <button mat-button class="sidebar-menus">
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
-                <span class="col-9 sidebar-menus-title">Filter Client</span>
+                <span class="col-9 sidebar-menus-title">Find Client</span>
             </div>
           </button>
         </mat-expansion-panel>
@@ -110,7 +110,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <a [routerLink]="['/clientboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
+          <a [routerLink]="['/userboard']" routerLinkActive="router-link-active" mat-button class="sidebar-menus">
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">library_books</mat-icon>
                 <span class="col-9 sidebar-menus-title">View Users</span>
@@ -119,13 +119,13 @@
           <button mat-button class="sidebar-menus" (click)= openAddNewUserDialogue()>
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">queue</mat-icon>
-                <span class="col-9 sidebar-menus-title">Add New User</span>
+                <span class="col-9 sidebar-menus-title">Create User</span>
             </div>
           </button>
           <button mat-button class="sidebar-menus">
             <div class="row">
                 <mat-icon class="sidebar-menus-icon col-1">filter</mat-icon>
-                <span class="col-9 sidebar-menus-title">Filter User</span>
+                <span class="col-9 sidebar-menus-title">Find User</span>
             </div>
           </button>
         </mat-expansion-panel>

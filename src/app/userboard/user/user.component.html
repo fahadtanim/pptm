@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row client-header">
+    <h1>{{this.user.user_name}}</h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <mat-tab-group>
+    <mat-tab label="User Profile">
+      <ng-template matTabContent>
+        <div class="container-fluid client-description-container">
+          <div class="row client-description-name-container">
+            <p class="col-2">Name</p>
+            <p class="col-10">{{this.user.user_name}}</p>
+          </div>
+          <div class="row">
+            <p class="col-2">Email</p>
+            <p class="col-10">{{this.user.user_email}}</p>
+          </div>
+          <div class="row">
+            <p class="col-2">Role</p>
+            <p class="col-10">{{this.userRoleServices.getUserRoleById(this.user.user_role_id).user_role_name}}</p>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row justify-space-between">
+            <button mat-raised-button color="primary">Edit User</button>
+            <button mat-raised-button color="primary">Remove User</button>
+          </div>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Assigned Projects">
+      <ng-template matTabContent>
+        Content 2 - Loaded:
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Assigned Tasks">
+      <ng-template matTabContent>
+        Content 3 - Loaded:
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
